@@ -30,3 +30,16 @@ export const changedPasswordAccount = {
     email: testEmail,
     password: newPassword,
 };
+
+// for online accounts
+export const onlineAccountInfo1 = {
+    accountName: "github",
+    accountUser: "someone@gmail.com",
+    password: "F***passoword",
+};
+
+export const onlineAccountInfo2 = {
+    accountName: "github",
+    accountUser: "someone1@gmail.com",
+    password: "F***passoword1",
+};

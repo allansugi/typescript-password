@@ -1,7 +1,7 @@
 // for database input
 export type InputAccount = {
     userId: number;
-}
+};
 
 export interface InputLoginAccount extends InputAccount {
     account_name: string;

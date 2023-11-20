@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 
 // TODO: make response status for each function where success is false
 export class AuthController {
-    public authService: AuthService;
+    private authService: AuthService;
 
     constructor() {
         this.authService = new AuthService();

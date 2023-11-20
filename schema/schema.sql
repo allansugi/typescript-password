@@ -6,7 +6,6 @@ create table account (
     primary key (id)
 );
 
--- TODO: make enum
 create table accountStore (
     id integer auto_increment,
     userId integer,

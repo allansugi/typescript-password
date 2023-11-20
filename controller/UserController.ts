@@ -1,4 +1,4 @@
-import { UserAccountService } from "../service/UserAccountService";
+import { UserAccountService } from "../service/UserService";
 import { Request, Response } from "express";
 
 export class UserAccountController {
@@ -11,7 +11,11 @@ export class UserAccountController {
     async changeUsername(req: Request, res: Response): Promise<void> {
         try {
             const result = await this.service.changeUsername(req.body);
-            res.status(200).json(result);
+            if (!result.success) {
+                res.status(401).json(result);
+            } else {
+                res.status(200).json(result);
+            }
         } catch (err) {
             console.error(err);
             res.status(500).json({

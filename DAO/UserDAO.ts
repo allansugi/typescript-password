@@ -70,6 +70,6 @@ export default class UserDAO {
     async updatePassword(id: number, password: string): Promise<void> {
         const query = "UPDATE account set password = ? WHERE id = ?";
         const values = [password, id];
-        let result = await this.pool.execute(query, values);
+        await this.pool.execute(query, values);
     }
 }

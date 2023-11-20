@@ -1,5 +1,5 @@
 import express from "express";
-import { UserAccountController } from "../controller/UserAccountController";
+import { UserAccountController } from "../controller/UserController";
 import { cookieJWTAuth } from "../middleware/verifyTokenMiddleware";
 
 /**

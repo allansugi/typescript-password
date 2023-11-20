@@ -1,15 +1,18 @@
+import { RowDataPacket } from "mysql2";
+
 // for database output
-export type OutputAccount = {
+export interface OutputAccount extends RowDataPacket {
     accountId: number;
     userId: number;
-};
+}
 
 export interface OutputLoginAccount extends OutputAccount {
     account_name: string;
-    email: number;
+    email: string; //could be username
     password: number;
 }
 
+// not sure whether to store debit/credit card info
 export interface OutputCardAccount extends OutputAccount {
     bank_name: string;
     cardholder: string;

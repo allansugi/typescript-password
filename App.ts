@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { router as authRouter } from "./routes/authRouter";
 import { router as userRouter } from "./routes/userRouter";
+import { router as accountRouter } from "./routes/accountRouter";
 import cookieParser from "cookie-parser";
 import { Server } from "http";
 
@@ -28,6 +29,7 @@ export class App {
     private loadRouter(): void {
         this.app.use("/api/auth/", authRouter);
         this.app.use("/api/user/", userRouter);
+        this.app.use("/api/account/", accountRouter);
     }
 
     getServer(): Server {
