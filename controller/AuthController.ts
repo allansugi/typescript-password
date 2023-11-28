@@ -29,6 +29,7 @@ export class AuthController {
                 res.status(401).json(result);
             } else {
                 const token = result.result;
+                console.log(token)
                 res.cookie("token", token);
                 res.status(200).json({
                     success: true,

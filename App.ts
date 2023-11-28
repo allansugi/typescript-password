@@ -4,6 +4,7 @@ import { router as userRouter } from "./routes/userRouter";
 import { router as accountRouter } from "./routes/accountRouter";
 import cookieParser from "cookie-parser";
 import { Server } from "http";
+import cors from "cors";
 
 export class App {
     private app: Application;
@@ -24,6 +25,7 @@ export class App {
     private loadMiddleware(): void {
         this.app.use(express.json());
         this.app.use(cookieParser());
+        this.app.use(cors({origin: 'http://localhost:3000', credentials: true}));
     }
 
     private loadRouter(): void {

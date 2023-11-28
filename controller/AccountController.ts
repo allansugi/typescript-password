@@ -31,7 +31,7 @@ export class AccountController {
 
     async getAllAccounts(req: Request, res: Response): Promise<void> {
         try {
-            const userId = parseInt(req.query.userId as string)
+            const userId = parseInt(req.body.userId.id as string)
             const result = await this.service.getAccounts(userId);
             res.status(200).json(result);
         } catch (error) {

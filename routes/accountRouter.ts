@@ -1,5 +1,6 @@
 import express from "express";
 import { AccountController } from "../controller/AccountController";
+import { cookieJWTAuth } from "../middleware/verifyTokenMiddleware";
 
 export const router = express.Router();
 const accountController = new AccountController();
@@ -19,7 +20,7 @@ router.get("/get/1/v1", (req, res) => {
     accountController.getAccount(req, res);
 })
 
-router.get("/get/all/v1", (req, res) => {
+router.get("/get/all/v1", cookieJWTAuth, (req, res) => {
     accountController.getAllAccounts(req, res);
 })
 

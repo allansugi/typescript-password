@@ -8,6 +8,17 @@ export class UserAccountController {
         this.service = new UserAccountService();
     }
 
+    async getToken(req: Request, res: Response): Promise<void> {
+        try {
+            res.status(200).json({success: true, token: req.cookies.token});
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                result: "not authenticated"
+            });
+        }
+    }
+
     async changeUsername(req: Request, res: Response): Promise<void> {
         try {
             const result = await this.service.changeUsername(req.body);

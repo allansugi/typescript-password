@@ -15,7 +15,7 @@ export default class AccountsDAO {
      * @returns null if no account found else return all associated accounts
      */
     async findAccounts(userId: number): Promise<OutputLoginAccount[] | null> {
-        const query = `SELECT * FROM accountStore WHERE userId = ?`;
+        const query = `SELECT id, account_name, account_email FROM accountStore WHERE userId = ?`;
         const values = [userId];
         const [accounts] = await this.pool.execute<OutputLoginAccount[]>(
             query,

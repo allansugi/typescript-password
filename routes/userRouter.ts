@@ -22,3 +22,7 @@ router.put("/change/username/v1", cookieJWTAuth, (req, res) => {
 router.put("/change/password/v1", cookieJWTAuth, (req, res) => {
     userController.changePassword(req, res);
 });
+
+router.get("/", (req, res) => {
+    userController.getToken(req, res);
+})
