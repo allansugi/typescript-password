@@ -1,4 +1,4 @@
-import { Pool } from "mysql2/promise";
+import { Pool, ResultSetHeader } from "mysql2/promise";
 import pool from "../config/dbConfig";
 import { OutputLoginAccount } from "../type/outputAccount";
 
@@ -29,17 +29,19 @@ export default class AccountsDAO {
      * @param username
      * @param email
      * @param password
+     * @returns id of the new account that is inserted
      */
     async insertnewAccount(
         userId: number,
         accountName: string,
         emailOrUser: string,
         password: string,
-    ): Promise<void> {
+    ): Promise<number> {
         const query =
             "INSERT INTO accountStore(userId, account_name, account_email, account_password) VALUES (?, ?, ?, ?)";
         const values = [userId, accountName, emailOrUser, password];
-        await this.pool.execute(query, values);
+        const [result] = await this.pool.execute<ResultSetHeader>(query, values);
+        return result.insertId;
     }
 
     /**

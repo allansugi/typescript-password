@@ -11,14 +11,14 @@ export class AccountsService {
 
     // add new account
     async addAccount(data: {
-        userId: number;
+        userId: {id :number, iat: number, exp: number};
         accountName: string;
         emailOrUser: string;
         password: string;
     }) {
         try {
-            const result = await this.dao.insertnewAccount(
-                data.userId,
+            const insertId = await this.dao.insertnewAccount(
+                data.userId.id,
                 data.accountName,
                 data.emailOrUser,
                 data.password,
@@ -26,6 +26,7 @@ export class AccountsService {
             return {
                 success: true,
                 result: "account has been added",
+                data: insertId
             };
         } catch (error) {
             return createDatabaseError(error);

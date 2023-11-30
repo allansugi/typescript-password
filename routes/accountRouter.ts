@@ -12,11 +12,11 @@ router.get("/echo", (req, res) => {
     });
 });
 
-router.post("/add/v1", (req, res) => {
+router.post("/add/v1", cookieJWTAuth, (req, res) => {
     accountController.addNewAccount(req, res);
 })
 
-router.get("/get/1/v1", (req, res) => {
+router.get("/get/1/v1", cookieJWTAuth, (req, res) => {
     accountController.getAccount(req, res);
 })
 
@@ -24,6 +24,6 @@ router.get("/get/all/v1", cookieJWTAuth, (req, res) => {
     accountController.getAllAccounts(req, res);
 })
 
-router.delete("/remove/v1", (req, res) => {
+router.delete("/remove/v1", cookieJWTAuth, (req, res) => {
     accountController.removeExistingAccount(req, res);
 })
